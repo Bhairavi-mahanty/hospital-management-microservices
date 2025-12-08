@@ -2,6 +2,7 @@ package com.doctor.Controller;
 
 import com.doctor.DTO.DoctorRequestDTO;
 import com.doctor.DTO.DoctorResponseDTO;
+import com.doctor.DTO.DoctorUpdateRequest;
 import com.doctor.Exception.DoctorException;
 import com.doctor.Service.DoctorService;
 import jakarta.validation.Valid;
@@ -59,12 +60,12 @@ public class DoctorController {
     @PutMapping("/update")
     public ResponseEntity<String> updateDoctor(
             @RequestParam long id,
-            @RequestBody Map<String, Object> body) {
+            @RequestBody DoctorUpdateRequest request) {
 
-        String email = body.get("email").toString();
-        long phone = Long.parseLong(body.get("phone").toString());
+//        String email = body.get("email").toString();
+//        long phone = Long.parseLong(body.get("phone").toString());
 
-        String response = doctorService.updateDetails(id, email, phone);
+        String response = doctorService.updateDetails(id, request);
         return ResponseEntity.ok(response);
     }
 

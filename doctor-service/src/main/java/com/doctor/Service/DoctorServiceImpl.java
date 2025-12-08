@@ -2,6 +2,7 @@ package com.doctor.Service;
 
 import com.doctor.DTO.DoctorRequestDTO;
 import com.doctor.DTO.DoctorResponseDTO;
+import com.doctor.DTO.DoctorUpdateRequest;
 import com.doctor.Entity.DoctorEntity;
 import com.doctor.Exception.DoctorException;
 import com.doctor.Repository.DoctorRepo;
@@ -93,10 +94,10 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public String updateDetails(long Id, String email, long phone) throws NullPointerException {
-        DoctorEntity doctorEntity = doctorRepo.findById((int) Id).orElseThrow(()-> new NullPointerException("No doctor found with this id"));
-        doctorEntity.setEmail(email);
-        doctorEntity.setPhoneNumber(phone);
+    public String updateDetails(long Id, DoctorUpdateRequest payload) throws NullPointerException {
+        DoctorEntity doctorEntity = doctorRepo.findById((int) Id).orElseThrow(()-> new RuntimeException("No doctor found with this id"));
+        doctorEntity.setEmail(payload.getEmail());
+        doctorEntity.setPhoneNumber(payload.getPhone());
         doctorRepo.save(doctorEntity);
         return "Doctor details updated successfully" + doctorEntity;
     }

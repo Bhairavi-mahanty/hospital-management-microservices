@@ -2,6 +2,7 @@ package com.doctor.Service;
 
 import com.doctor.DTO.DoctorRequestDTO;
 import com.doctor.DTO.DoctorResponseDTO;
+import com.doctor.DTO.DoctorUpdateRequest;
 import com.doctor.Exception.DoctorException;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,5 @@ public interface DoctorService {
 
     //public Map<String , List<DoctorResponseDTO>> getDoctorsGrpBySpecialization () ;
 
-    public String updateDetails (long Id , String email , long phone) throws NullPointerException;
+    public String updateDetails (long Id, DoctorUpdateRequest payload) throws RuntimeException;
 }
