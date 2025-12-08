@@ -1,12 +1,17 @@
 package com.doctor.Controller;
 
-import com.doctor.DTO.DoctorDTO;
+import com.doctor.DTO.DoctorRequestDTO;
+import com.doctor.DTO.DoctorResponseDTO;
+import com.doctor.Exception.DoctorException;
 import com.doctor.Service.DoctorService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/doctor")
@@ -18,8 +23,8 @@ public class DoctorController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<String> createDoctor(@RequestBody DoctorDTO doctorDTO){
-        String response = doctorService.createDoctor(doctorDTO);
+    public ResponseEntity<String> createDoctor(@Valid @RequestBody DoctorRequestDTO docDTO) throws DoctorException {
+        String response = doctorService.createDoctor(docDTO);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
@@ -28,5 +33,39 @@ public class DoctorController {
         return new ResponseEntity<>("doctorService is up and running" , HttpStatus.OK);
     }
 
+    @GetMapping("/{doctorId}")
+    public ResponseEntity<DoctorResponseDTO> getDoctorById(@PathVariable Integer doctorId) throws IllegalArgumentException {
+        DoctorResponseDTO doctorResponseDTO = doctorService.getDoctorById(doctorId);
+        return new ResponseEntity<>(doctorResponseDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<DoctorResponseDTO>> getAllDoctors() throws NullPointerException {
+        List<DoctorResponseDTO> response = doctorService.getAllDoctors();
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @GetMapping("/specialization/")
+    public ResponseEntity<List<DoctorResponseDTO>> getDoctorBySpecialization(@RequestParam String specialization) throws NullPointerException {
+        List<DoctorResponseDTO> response = doctorService.getDoctorBySpecialization(specialization);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/email/")
+    public ResponseEntity<DoctorResponseDTO> getDoctorByEmail(@RequestParam String email) throws NullPointerException {
+        DoctorResponseDTO response = doctorService.getByEmail(email);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<String> updateDoctor(
+            @RequestParam long id,
+            @RequestBody Map<String, Object> body) {
+
+        String email = body.get("email").toString();
+        long phone = Long.parseLong(body.get("phone").toString());
+
+        String response = doctorService.updateDetails(id, email, phone);
+        return ResponseEntity.ok(response);
+    }
 
 }

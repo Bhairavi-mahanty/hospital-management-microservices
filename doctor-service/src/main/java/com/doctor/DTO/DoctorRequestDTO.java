@@ -1,21 +1,21 @@
 package com.doctor.DTO;
 
-public class DoctorDTO {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
-    private Integer doctorId;
+public class DoctorRequestDTO {
+
+    @NotBlank ( message = "Name is required")
     private String doctorName;
+    @NotBlank (message = "Specialization is required")
     private String specialization;
+    @Min(value = 0, message = "Experience cannot be in negative years")
     private float  experience;
+    @Email(message = "Email is not valid")
     private String email;
+    @Min(value = 1000000000, message = "Phone number must be 10 digits")
     private long   phoneNumber;
-
-    public Integer getDoctorId() {
-        return doctorId;
-    }
-
-    public void setDoctorId(Integer doctorId) {
-        this.doctorId = doctorId;
-    }
 
     public String getDoctorName() {
         return doctorName;
@@ -59,9 +59,8 @@ public class DoctorDTO {
 
     @Override
     public String toString() {
-        return "DoctorEntity{" +
-                "doctorId='" + doctorId + '\'' +
-                ", doctorName='" + doctorName + '\'' +
+        return "DoctorRequestDTO{" +
+                "doctorName='" + doctorName + '\'' +
                 ", specialization='" + specialization + '\'' +
                 ", experience=" + experience +
                 ", email='" + email + '\'' +
