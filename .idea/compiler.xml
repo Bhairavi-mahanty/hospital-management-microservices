@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="doctor" />
         <module name="patient" />
+        <module name="appointment" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="appointment" options="-parameters" />
       <module name="doctor" options="-parameters" />
       <module name="patient" options="-parameters" />
     </option>

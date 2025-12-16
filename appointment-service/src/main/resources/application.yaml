@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: appointment
+
+server:
+  port: 8083
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/appointment_db
+    username: root
+    password: your_password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+# enable feign
+  cloud:
+    openfeign:
+      enabled: true
