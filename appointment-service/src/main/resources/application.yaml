@@ -2,14 +2,11 @@ spring:
   application:
     name: appointment
 
-server:
-  port: 8083
-
   datasource:
-    url: jdbc:mysql://localhost:3306/appointment_db
-    username: root
-    password: your_password
-    driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/appointment_db
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
@@ -24,3 +21,6 @@ server:
   cloud:
     openfeign:
       enabled: true
+
+server:
+  port: 8083
