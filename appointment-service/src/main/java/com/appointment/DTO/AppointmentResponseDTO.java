@@ -9,8 +9,8 @@ import java.time.LocalTime;
 public class AppointmentResponseDTO {
 
         private Integer id;
-        private Long doctorId;
-        private Long patientId;
+        private Integer doctorId;
+        private Integer patientId;
         private LocalDate appointmentDate;
         private LocalDateTime appointmentTime;
         private AppointmentStatus status;
@@ -24,19 +24,19 @@ public class AppointmentResponseDTO {
         this.id = id;
     }
 
-    public Long getDoctorId() {
+    public Integer getDoctorId() {
         return doctorId;
     }
 
-    public void setDoctorId(Long doctorId) {
+    public void setDoctorId(Integer doctorId) {
         this.doctorId = doctorId;
     }
 
-    public Long getPatientId() {
+    public Integer getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(Long patientId) {
+    public void setPatientId(Integer patientId) {
         this.patientId = patientId;
     }
 
