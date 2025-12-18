@@ -18,7 +18,10 @@ public class AppointmentRequestDTO {
     private LocalDate appointmentDate;
 
     @NotNull
-    private LocalDateTime appointmentTime;
+    private LocalTime appointmentTime;
+
+    @NotNull
+    private LocalTime appointmentEndTime;
 
     public Integer getDoctorId() {
         return doctorId;
@@ -44,12 +47,18 @@ public class AppointmentRequestDTO {
         this.appointmentDate = appointmentDate;
     }
 
-    public LocalDateTime getAppointmentTime() {
+    public LocalTime getAppointmentTime() {
         return appointmentTime;
     }
 
-    public void setAppointmentTime(LocalDateTime appointmentTime) {
+    public void setAppointmentTime(LocalTime appointmentTime) {
         this.appointmentTime = appointmentTime;
+    }
+    public LocalTime getAppointmentEndTime() {
+        return appointmentEndTime;
+    }
+    public void setAppointmentEndTime(LocalTime appointmentEndTime) {
+        this.appointmentEndTime = appointmentEndTime;
     }
 
     @Override
@@ -59,6 +68,7 @@ public class AppointmentRequestDTO {
                 ", patientId=" + patientId +
                 ", appointmentDate=" + appointmentDate +
                 ", appointmentTime=" + appointmentTime +
+                ", appointmentEndTime=" + appointmentEndTime +
                 '}';
     }
 }

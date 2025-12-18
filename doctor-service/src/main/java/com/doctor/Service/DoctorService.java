@@ -1,5 +1,6 @@
 package com.doctor.Service;
 
+import com.doctor.DTO.DoctorAvailabilityResponse;
 import com.doctor.DTO.DoctorRequestDTO;
 import com.doctor.DTO.DoctorResponseDTO;
 import com.doctor.DTO.DoctorUpdateRequest;
@@ -24,4 +25,6 @@ public interface DoctorService {
     //public Map<String , List<DoctorResponseDTO>> getDoctorsGrpBySpecialization () ;
 
     public String updateDetails (long Id, DoctorUpdateRequest payload) throws RuntimeException;
+
+    public DoctorAvailabilityResponse getDoctorAvailability(Integer doctorId) throws IllegalArgumentException;
 }

@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "appointment_entities")
@@ -17,9 +18,11 @@ public class AppointmentEntity {
     @Column (name = "appointmentId")
     private int id;
     private LocalDate appointmentDate;
-    private LocalDateTime appointmentTime;
+    private LocalTime appointmentTime;
     private Integer doctorId;
     private Integer patientId;
+    //private LocalTime startTime;
+    private LocalTime appointmentEndTime;
 
     @Enumerated(EnumType.STRING)
     private AppointmentStatus status;
@@ -40,11 +43,11 @@ public class AppointmentEntity {
         this.appointmentDate = appointmentDate;
     }
 
-    public LocalDateTime getAppointmentTime() {
+    public LocalTime getAppointmentTime() {
         return appointmentTime;
     }
 
-    public void setAppointmentTime(LocalDateTime appointmentTime) {
+    public void setAppointmentTime(LocalTime appointmentTime) {
         this.appointmentTime = appointmentTime;
     }
 
@@ -72,6 +75,14 @@ public class AppointmentEntity {
         this.status = status;
     }
 
+    public LocalTime getAppointmentEndTime() {
+        return appointmentEndTime;
+    }
+
+    public void setAppointmentEndTime(LocalTime appointmentEndTime) {
+        this.appointmentEndTime = appointmentEndTime;
+    }
+
     @Override
     public String toString() {
         return "AppointmentEntity{" +
@@ -80,6 +91,7 @@ public class AppointmentEntity {
                 ", appointmentTime=" + appointmentTime +
                 ", doctorId=" + doctorId +
                 ", patientId=" + patientId +
+                ", appointmentEndTime=" + appointmentEndTime +
                 ", status=" + status +
                 '}';
     }

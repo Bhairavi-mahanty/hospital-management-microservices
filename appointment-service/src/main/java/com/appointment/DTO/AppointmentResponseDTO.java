@@ -12,8 +12,9 @@ public class AppointmentResponseDTO {
         private Integer doctorId;
         private Integer patientId;
         private LocalDate appointmentDate;
-        private LocalDateTime appointmentTime;
+        private LocalTime appointmentTime;
         private AppointmentStatus status;
+        private LocalTime appointmentEndTime;
 
 
     public Integer getId() {
@@ -40,11 +41,11 @@ public class AppointmentResponseDTO {
         this.patientId = patientId;
     }
 
-    public LocalDateTime getAppointmentTime() {
+    public LocalTime getAppointmentTime() {
         return appointmentTime;
     }
 
-    public void setAppointmentTime(LocalDateTime appointmentTime) {
+    public void setAppointmentTime(LocalTime appointmentTime) {
         this.appointmentTime = appointmentTime;
     }
 
@@ -63,6 +64,13 @@ public class AppointmentResponseDTO {
     public void setStatus(AppointmentStatus status) {
         this.status = status;
     }
+    public LocalTime getAppointmentEndTime() {
+        return appointmentEndTime;
+    }
+
+    public void setAppointmentEndTime(LocalTime appointmentEndTime) {
+        this.appointmentEndTime = appointmentEndTime;
+    }
 
     @Override
     public String toString() {
@@ -73,6 +81,9 @@ public class AppointmentResponseDTO {
                 ", appointmentDate=" + appointmentDate +
                 ", appointmentTime=" + appointmentTime +
                 ", status=" + status +
+                ", appointmentEndTime=" + appointmentEndTime +
                 '}';
     }
+
+
 }

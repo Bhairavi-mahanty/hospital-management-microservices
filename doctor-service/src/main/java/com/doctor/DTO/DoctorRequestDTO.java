@@ -3,6 +3,9 @@ package com.doctor.DTO;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalTime;
 
 public class DoctorRequestDTO {
 
@@ -16,6 +19,36 @@ public class DoctorRequestDTO {
     private String email;
     @Min(value = 1000000000, message = "Phone number must be 10 digits")
     private long   phoneNumber;
+    @NotNull (message = "Available from is required")
+    private LocalTime availableFrom;  // e.g. 10:00
+    @NotNull (message = "Available to is required")
+    private LocalTime availableTo;    // e.g. 18:00
+    @Min(value = 15, message = "Slot duration cannot be negative")
+    private Integer slotDuration;      // in minutes (e.g. 15)
+
+    public LocalTime getAvailableFrom() {
+        return availableFrom;
+    }
+
+    public void setAvailableFrom(LocalTime availableFrom) {
+        this.availableFrom = availableFrom;
+    }
+
+    public LocalTime getAvailableTo() {
+        return availableTo;
+    }
+
+    public void setAvailableTo(LocalTime availableTo) {
+        this.availableTo = availableTo;
+    }
+
+    public Integer getSlotDuration() {
+        return slotDuration;
+    }
+
+    public void setSlotDuration(Integer slotDuration) {
+        this.slotDuration = slotDuration;
+    }
 
     public String getDoctorName() {
         return doctorName;
@@ -65,6 +98,9 @@ public class DoctorRequestDTO {
                 ", experience=" + experience +
                 ", email='" + email + '\'' +
                 ", phoneNumber=" + phoneNumber +
+                ", availableFrom=" + availableFrom +
+                ", availableTo=" + availableTo +
+                ", slotDuration=" + slotDuration +
                 '}';
     }
 }

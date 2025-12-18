@@ -1,5 +1,6 @@
 package com.doctor.Controller;
 
+import com.doctor.DTO.DoctorAvailabilityResponse;
 import com.doctor.DTO.DoctorRequestDTO;
 import com.doctor.DTO.DoctorResponseDTO;
 import com.doctor.DTO.DoctorUpdateRequest;
@@ -67,6 +68,11 @@ public class DoctorController {
 
         String response = doctorService.updateDetails(id, request);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{doctorId}/availability")
+    public ResponseEntity<DoctorAvailabilityResponse> getDoctorAvailability(@PathVariable Integer doctorId) throws IllegalArgumentException {
+        return new ResponseEntity<>(doctorService.getDoctorAvailability(doctorId), HttpStatus.OK);
     }
 
 }
