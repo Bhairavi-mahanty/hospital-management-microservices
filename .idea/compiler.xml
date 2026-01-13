@@ -9,6 +9,7 @@
         <module name="doctor" />
         <module name="appointment" />
         <module name="Eureka" />
+        <module name="gateWay" />
         <module name="patient" />
       </profile>
     </annotationProcessing>
@@ -18,6 +19,7 @@
       <module name="Eureka" options="-parameters" />
       <module name="appointment" options="-parameters" />
       <module name="doctor" options="-parameters" />
+      <module name="gateWay" options="-parameters" />
       <module name="patient" options="-parameters" />
     </option>
   </component>

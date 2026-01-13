@@ -9,6 +9,7 @@ import com.appointment.FeignClients.DoctorCilent;
 import com.appointment.FeignClients.PatientClient;
 import com.appointment.Repository.AppointmentRepo;
 import com.appointment.Utility.AppointmentStatus;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,7 @@ public class AppointmentServiceImpl implements AppointmentService{
     @Autowired
     PatientClient patientClient;
 
+    Logger logger = org.slf4j.LoggerFactory.getLogger(AppointmentServiceImpl.class);
 
 
     @Override
